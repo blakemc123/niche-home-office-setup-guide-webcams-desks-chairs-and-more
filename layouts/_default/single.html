@@ -1,0 +1,38 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  <div class="meta">
+    {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+    {{ with .Params.keyword }}· <em>{{ . }}</em>{{ end }}
+  </div>
+
+  {{ if .Site.Params.adsense_slot_in_article }}
+  <div class="ad-slot">
+    <ins class="adsbygoogle" style="display:block; text-align:center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-{{ .Site.Params.adsense_pub_id }}" data-ad-slot="{{ .Site.Params.adsense_slot_in_article }}"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+  {{ end }}
+
+  {{ .Content }}
+
+  {{ with .Params.faq }}
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    {{ range . }}
+    <div class="faq-item">
+      <h3>{{ .question }}</h3>
+      <p>{{ .answer }}</p>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+</article>
+
+{{ if .Site.Params.adsense_slot_sidebar }}
+<div class="ad-slot" style="margin-top:2rem">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-{{ .Site.Params.adsense_pub_id }}" data-ad-slot="{{ .Site.Params.adsense_slot_sidebar }}" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+{{ end }}
+{{ end }}

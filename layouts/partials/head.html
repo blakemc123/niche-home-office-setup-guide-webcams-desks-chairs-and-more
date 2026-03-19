@@ -1,0 +1,43 @@
+{{/* Schema.org structured data for articles */}}
+{{ if .IsPage }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "{{ .Title }}",
+  "datePublished": "{{ .Date.Format "2006-01-02" }}",
+  "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+  "description": "{{ with .Description }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}",
+  "author": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{ .Site.Title }}"
+  }
+}
+</script>
+{{ end }}
+
+{{ if .Params.faq }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {{ range $i, $faq := .Params.faq }}
+    {{ if $i }},{{ end }}
+    {
+      "@type": "Question",
+      "name": "{{ $faq.question }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ $faq.answer }}"
+      }
+    }
+    {{ end }}
+  ]
+}
+</script>
+{{ end }}

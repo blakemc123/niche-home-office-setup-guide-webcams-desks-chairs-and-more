@@ -1,0 +1,14 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+{{ define "main" }}
+<h1>{{ .Title }}</h1>
+{{ .Content }}
+<ul class="article-list">
+  {{ range .Pages }}
+  <li>
+    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <div class="meta">{{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read</div>
+    <p>{{ .Summary }}</p>
+  </li>
+  {{ end }}
+</ul>
+{{ end }}

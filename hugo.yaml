@@ -1,0 +1,36 @@
+baseURL: https://niche-home-office-setup-guide-webcams-desks-chairs-and-more.vercel.app/
+languageCode: en-us
+title: 'Home Office Setup Guide (): Webcams, Desks, Chairs, and More'
+theme: ''
+params:
+  description: "Gear can make or break your home office setup. Here\u2019s our ultimate\
+    \ list of nearly 100 items, from monitors and desks to webcams and chairs."
+  tagline: 'Your Guide to the Best Home Office Setup Guide (): Webcams, Desks, Chairs,
+    and More'
+  adsense_pub_id: ''
+  adsense_slot_header: ''
+  adsense_slot_in_article: ''
+  adsense_slot_sidebar: ''
+menus:
+  main:
+  - name: Home
+    url: /
+    weight: 1
+  - name: Articles
+    url: /posts/
+    weight: 2
+  - name: About
+    url: /about/
+    weight: 3
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 3
+outputs:
+  home:
+  - HTML
+  - RSS
+enableRobotsTXT: true
